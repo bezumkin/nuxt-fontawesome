@@ -87,7 +87,7 @@ function addIcons(iconStyles: {[key in IconStyle]?: string[] | boolean}, type = 
 
     if (Array.isArray(icons) && icons.length) {
       const styleIcons = icons.map((icon: string) => {
-        if (!icon.startsWith('fa')) {
+        if (!icon.startsWith('fa-') && !icon.match(/^fa[A-Z]/)) {
           icon = 'fa-' + icon
         }
         icon = camelize(icon)

@@ -12,8 +12,8 @@ export default defineNuxtConfig({
   // @ts-ignore
   fontawesome: {
     icons: {
-      solid: ['coffee', 'child', 'archive', 'envelope', 'pen-clip', 'circle', 'comment'],
-      regular: ['comment'],
+      solid: ['face-smile', 'child', 'archive', 'envelope', 'pen-clip', 'circle', 'comment'],
+      regular: ['comment', 'face-smile'],
       brands: ['twitter'],
     },
   },

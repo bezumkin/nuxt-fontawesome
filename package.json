@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "nuxt3-fontawesome",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "exports": {
     ".": {

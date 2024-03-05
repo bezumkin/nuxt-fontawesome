@@ -6,13 +6,13 @@
 
         <ul class="list ma0 pa0 flex flex-row flex-wrap teal4">
           <li class="pv3 ph2 ma0 link grow">
-            <font-awesome icon="coffee" size="4x" />
+            <font-awesome icon="face-smile" size="4x" />
           </li>
           <li class="pv3 ph2 ma0 link grow">
-            <font-awesome :icon="['fas', 'coffee']" flip="horizontal" size="4x" />
+            <font-awesome :icon="['far', 'face-smile']" size="4x" />
           </li>
           <li class="pv3 ph2 ma0 link grow">
-            <font-awesome :icon="['far', 'comment']" size="4x" />
+            <font-awesome :icon="['far', 'comment']" flip="horizontal" size="4x" />
           </li>
           <li class="pv3 ph2 ma0 link grow">
             <font-awesome icon="child" transform="shrink-4 down-2 right-2" :mask="['fas', 'circle']" size="4x" />
