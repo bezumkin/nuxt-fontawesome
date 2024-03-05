@@ -1,0 +1,59 @@
+{
+  "license": "MIT",
+  "name": "nuxt3-fontawesome",
+  "version": "1.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bezumkin/nuxt3-fontawesome.git"
+  },
+  "author": "bezumkin",
+  "bugs": {
+    "url": "https://github.com/bezumkin/nuxt3-fontawesome/issues"
+  },
+  "homepage": "https://github.com/bezumkin/nuxt3-fontawesome#readme",
+  "description": "",
+  "scripts": {
+    "analyze": "nuxi analyze",
+    "prepack": "nuxt-module-build build",
+    "prepare": "nuxt-module-build prepare && nuxi prepare playground",
+    "dev": "nuxi dev playground",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "release": "npm run typecheck && npm run lint && npm run prepack && npm publish"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@nuxt/kit": "^3.9.1"
+  },
+  "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.9.1",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/fontawesome": "^1.1.2",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.49.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nuxt": "^3.10.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.5",
+    "vue": "^3.4.21",
+    "vue-eslint-parser": "^9.3.1"
+  }
+}

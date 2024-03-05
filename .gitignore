@@ -1,0 +1,15 @@
+/.idea
+/.local
+/.nuxt
+/.eslintcache
+/.stylelintcache
+/.output
+/dist
+/node_modules
+/.env
+/yarn.lock
+/package-lock.json
+/yarn-error.log
+/playground/.nuxt
+/playground/node_modules
+/src/.nuxt
