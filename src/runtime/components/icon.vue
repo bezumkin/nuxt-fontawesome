@@ -157,7 +157,7 @@ const properties = computed(() => {
     viewBox: `0 0 ${parsedIcon.value?.icon[0]} ${parsedIcon.value?.icon[1]}`,
   }
   if (props.symbol) {
-    properties.id = parsedIcon.value?.iconName
+    properties.id = [parsedIcon.value?.prefix, 'fa', parsedIcon.value?.iconName].join('-')
   }
   if (props.title) {
     properties['aria-labelledby'] = uniqueId.value

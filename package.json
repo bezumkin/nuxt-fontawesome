@@ -1,7 +1,8 @@
 {
   "license": "MIT",
   "name": "nuxt3-fontawesome",
-  "version": "1.0.2",
+  "description": "Module to use Font Awesome 6 icons in your Nuxt 3 project.",
+  "version": "1.0.3",
   "type": "module",
   "exports": {
     ".": {
@@ -24,7 +25,6 @@
     "url": "https://github.com/bezumkin/nuxt3-fontawesome/issues"
   },
   "homepage": "https://github.com/bezumkin/nuxt3-fontawesome#readme",
-  "description": "",
   "scripts": {
     "analyze": "nuxi analyze",
     "prepack": "nuxt-module-build build",

@@ -20,7 +20,7 @@
 
           <li class="pv3 ph2 ma0 link grow">
             <font-awesome icon="pen-clip" transform="shrink-10 up-.5" mask="comment" size="4x" symbol />
-            <svg style="width: 4em; height: 4em"><use xlink:href="#pen-clip"></use></svg>
+            <svg style="width: 4em; height: 4em"><use xlink:href="#fas-fa-pen-clip"></use></svg>
           </li>
 
           <li class="pv3 ph2 ma0 link grow">
