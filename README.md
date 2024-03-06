@@ -118,7 +118,7 @@ Boolean whether to append `-icon` to the icon component name. This option exists
 ```
 
 ## Usage
-You can find more details under `example[playground](playground)` folder.
+You can find more details under [playground](https://github.com/bezumkin/nuxt3-fontawesome/tree/main/playground) folder.
 
 - Ensure you have installed an icon package
   `npm i -D @fortawesome/free-solid-svg-icons`
