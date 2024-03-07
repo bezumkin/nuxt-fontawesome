@@ -8,12 +8,14 @@
 <script setup lang="ts">
 import {
   icon as faIcon,
+  parse as faParse,
+  config as faConfig,
   type IconDefinition,
   type IconLookup,
-  parse,
   type Transform,
 } from '@fortawesome/fontawesome-svg-core'
 import {computed} from 'vue'
+import type {IconName} from '@fortawesome/fontawesome-common-types'
 import {transformIsMeaningful} from '../utils'
 
 const props = defineProps({
@@ -130,7 +132,7 @@ const icon = computed(() => normalizeIconArgs(props.icon))
 const mask = computed(() => normalizeIconArgs(props.mask))
 const transform = computed(() => {
   if (props.transform) {
-    const transform = typeof props.transform !== 'object' ? parse.transform(props.transform) : props.transform
+    const transform = typeof props.transform !== 'object' ? faParse.transform(props.transform) : props.transform
     if (transform && transformIsMeaningful(transform)) {
       return transformForSvg(transform)
     }
@@ -149,7 +151,7 @@ const properties = computed(() => {
   const properties: Record<string, any> = {
     'aria-hidden': true,
     'data-prefix': parsedIcon.value?.prefix,
-    'data-icon': parsedIcon.value?.icon,
+    'data-icon': parsedIcon.value?.iconName,
     class: classes.value,
     focusable: false,
     role: 'img',
@@ -210,17 +212,35 @@ const classes = computed(() => {
     .map((key) => (classes[key] ? key : null))
     .filter((key) => key)
 
-  return ['svg-inline--fa', ...active] as string[]
+  return [faConfig.replacementClass, ...active] as string[]
 })
 
 const uniqueId = computed(() => {
-  return 'svg-inline--fa-title-' + (props.titleId || nextUniqueId())
+  return faConfig.replacementClass + '-title-' + (props.titleId || nextUniqueId())
 })
 
 function normalizeIconArgs(icon: Record<string, any> | string | string[] | null) {
   if (icon) {
     if (typeof icon === 'string') {
-      return {prefix: 'fas', iconName: icon}
+      const styles: Record<string, string> = {
+        solid: 'fas',
+        regular: 'far',
+        light: 'fal',
+        thin: 'fat',
+        duotone: 'fad',
+        brands: 'fab',
+      }
+      let prefix = styles[faConfig.styleDefault] || 'fas'
+      let iconName = icon.replace(/\bfa-/g, '')
+      if (iconName.includes(' ')) {
+        const tmp: string[] = iconName.split(/\s+/)
+        if (tmp[0] in styles) {
+          prefix = styles[tmp[0]]
+        }
+        iconName = tmp[1]
+      }
+
+      return {prefix, iconName}
     }
 
     if (Array.isArray(icon) && icon.length === 2) {
@@ -271,17 +291,27 @@ function nextUniqueId() {
 
 function getSVG() {
   const fill = parsedMask.value ? 'black' : 'currentColor'
-  const title = props.title ? `<title id="${uniqueId.value}">${props.title}</title>` : ''
+  const svg = []
+
+  let path = parsedIcon.value.icon[4]
+  if (!Array.isArray(path)) {
+    path = [path]
+  }
+  path.forEach((i: string) => {
+    svg.push(
+      `<path fill="${fill}"${transform.value ? ' transform="' + transform.value.path + '"' : ''} d="${i}"></path>`,
+    )
+  })
 
   if (transform.value) {
-    return `<g transform="${transform.value.outer}">
-      <g transform="${transform.value.inner}">
-        ${title}
-        <path transform="${transform.value.path}" fill="${fill}" d="${parsedIcon.value.icon[4]}"></path>
-      </g>
-    </g>`.replace(/\n/, '')
+    svg.unshift(`<g transform="${transform.value.outer}">`, `<g transform="${transform.value.inner}">`)
+    svg.push('</g>', '</g>')
   }
-  return `${title}<path fill="${fill}" d="${parsedIcon.value.icon[4]}"></path>`
+  if (props.title) {
+    svg.unshift(`<title id="${uniqueId.value}">${props.title}</title>`)
+  }
+
+  return svg.join('')
 }
 
 if (props.icon && !parsedIcon.value) {
