@@ -7,12 +7,12 @@ The main difference from official component is creating real tags in `template` 
 
 I tried to implement as many features I could (like `mask`, `transform` and `symbol`) but not sure if everything works the same way as in `vue-fontawesome`.
 
-Please use [issues](https://github.com/bezumkin/nuxt3-fontawesome/issues) to report problems.
+Please use [issues](https://github.com/bezumkin/nuxt-fontawesome/issues) to report problems.
 
 ## Setup
 - Add dependency using npm to your project
 ```bash
-npm i -D nuxt3-fontawesome
+npm i -D @vesp/nuxt-fontawesome
 ```
 
 - Add some icon packs
@@ -20,14 +20,14 @@ npm i -D nuxt3-fontawesome
 npm i -D @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
 ```
 
-- Add `nuxt3-fontawesome` to `modules` in your `nuxt.config.ts`
+- Add `@vesp/nuxt-fontawesome` to `modules` in your `nuxt.config.ts`
 - Configure loaded icons
 
 Use the `fontawesome` key:
 ```js
   // nuxt.config.ts
   modules: [
-    'nuxt3-fontawesome',
+    '@vesp/nuxt-fontawesome',
   ],
   fontawesome: {
     icons: {
@@ -118,7 +118,7 @@ Boolean whether to append `-icon` to the icon component name. This option exists
 ```
 
 ## Usage
-You can find more details under [playground](https://github.com/bezumkin/nuxt3-fontawesome/tree/main/playground) folder.
+You can find more details under [playground](https://github.com/bezumkin/nuxt-fontawesome/tree/main/playground) folder.
 
 - Ensure you have installed an icon package
   `npm i -D @fortawesome/free-solid-svg-icons`

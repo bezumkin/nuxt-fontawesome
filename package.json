@@ -1,6 +1,6 @@
 {
   "license": "MIT",
-  "name": "nuxt3-fontawesome",
+  "name": "@vesp/nuxt-fontawesome",
   "description": "Module to use Font Awesome 6 icons in your Nuxt 3 project.",
   "version": "1.0.3",
   "type": "module",
@@ -18,13 +18,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bezumkin/nuxt3-fontawesome.git"
+    "url": "git+https://github.com/bezumkin/nuxt-fontawesome.git"
   },
   "author": "bezumkin",
   "bugs": {
-    "url": "https://github.com/bezumkin/nuxt3-fontawesome/issues"
+    "url": "https://github.com/bezumkin/nuxt-fontawesome/issues"
   },
-  "homepage": "https://github.com/bezumkin/nuxt3-fontawesome#readme",
+  "homepage": "https://github.com/bezumkin/nuxt-fontawesome#readme",
   "scripts": {
     "analyze": "nuxi analyze",
     "prepack": "nuxt-module-build build",
@@ -33,7 +33,7 @@
     "typecheck": "nuxt typecheck",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "release": "npm run typecheck && npm run lint && npm run prepack && npm publish"
+    "release": "npm run typecheck && npm run lint && npm run prepack && npm publish --access public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
