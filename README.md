@@ -10,9 +10,9 @@ I tried to implement as many features I could (like `mask`, `transform` and `sym
 Please use [issues](https://github.com/bezumkin/nuxt-fontawesome/issues) to report problems.
 
 ## Setup
-- Add dependency using npm to your project
+- Add dependency to your project
 ```bash
-npm i -D @vesp/nuxt-fontawesome
+npx nuxi@latest module add @vesp/nuxt-fontawesome
 ```
 
 - Add some icon packs
