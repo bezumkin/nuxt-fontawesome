@@ -17,4 +17,5 @@ export default defineNuxtConfig({
       brands: ['twitter'],
     },
   },
+  compatibilityDate: '2024-08-26',
 })
