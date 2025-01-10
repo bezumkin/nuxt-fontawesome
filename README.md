@@ -184,6 +184,37 @@ import {faGithub} from '@fortawesome/free-brands-svg-icons'
 </script>
 ```
 
+### FontAwesome Kit
+
+You can use [kits from Fontawesome Pro](https://docs.fontawesome.com/web/setup/use-kit).
+
+1. [Retrieve your kit ID on FontAwesome](https://fontawesome.com/kits): `https://fontawesome.com/kits/**KIT_ID**/package` (10 alpha-numerics characters)
+2. In ***Settings*** tab, activate **Enable Installing Your Kit as a Package** option if not yet done
+3. Install, in your local project, your custom kit package as defined in ***Package*** tab
+4. Update `nuxt.config.ts` by adding your kit ID under `kitIdentifier` key and icons required in project under `proIcons.kit` key:
+    ```json
+    // https://nuxt.com/docs/api/configuration/nuxt-config
+    export default defineNuxtConfig({
+        compatibilityDate: '2024-11-01',
+        devtools: { enabled: true },
+        modules: [
+            '@vesp/nuxt-fontawesome'
+        ],
+        fontawesome: {
+            kitIdentifier: (KIT_ID),
+            proIcons: {
+                kit: [
+                    (ICON_NAME ex: solid-user-circle-exclamation)
+                ],
+            },
+        }
+    })
+    ```
+5. Use your imported icon in your page like this:
+    ```javascript
+    <font-awesome :icon="['fak', 'solid-user-circle-exclamation']" />
+    ```
+
 ## License
 
 [MIT License](./LICENSE.md)

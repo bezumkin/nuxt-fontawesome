@@ -3,12 +3,15 @@ import {addPlugin, addTemplate, createResolver, defineNuxtModule, addComponent} 
 
 const iconsToAdd: string[] = []
 
+export type IconStyleWithKit = IconStyle & 'kit'
+
 export interface ModuleOptions {
   component: string
   suffix?: boolean
   addCss?: boolean
   icons?: {[key in IconStyle]?: string[]}
   proIcons?: {[key in IconStyle]?: string[]}
+  kitIdentifier?: string
   sharpIcons?: {[key in IconStyle]?: string[]}
   useLayers?: boolean
   useLayersText?: boolean
@@ -66,7 +69,7 @@ function getContents(options: ModuleOptions) {
     strings.push(...addIcons(options.icons, 'free'))
   }
   if (options.proIcons) {
-    strings.push(...addIcons(options.proIcons, 'pro'))
+    strings.push(...addIcons(options.proIcons, 'pro', options.kitIdentifier))
   }
   if (options.sharpIcons) {
     strings.push(...addIcons(options.sharpIcons, 'sharp'))
@@ -78,12 +81,19 @@ function getContents(options: ModuleOptions) {
   return strings.join('\n\n')
 }
 
-function addIcons(iconStyles: {[key in IconStyle]?: string[] | boolean}, type = 'free') {
+function addIcons(iconStyles: {[key in IconStyleWithKit]?: string[] | boolean}, type = 'free', kitIdentifier?: string) {
   const imports = []
 
   for (const style in iconStyles) {
-    const pkgName = `${type}-${style}-svg-icons`
-    const icons = iconStyles[style as IconStyle]
+    let pkgName = `@fortawesome/${type}-${style}-svg-icons`
+    const icons: string[] = iconStyles[style as IconStyleWithKit]
+
+    if (style == 'kit') {
+      if (typeof(kitIdentifier) !== 'string' || !kitIdentifier.match(/^[a-z\d]{10}$/)) {
+        throw new Error('Please check your FontAwesome kit ID')
+      }
+      pkgName = `@awesome.me/kit-${kitIdentifier}/icons/kit/custom`
+    }
 
     if (Array.isArray(icons) && icons.length) {
       const styleIcons = icons.map((icon: string) => {
@@ -92,11 +102,15 @@ function addIcons(iconStyles: {[key in IconStyle]?: string[] | boolean}, type = 
         }
         icon = camelize(icon)
 
-        const alias = `${type}Fa${style[0]}${icon[0].toUpperCase()}${icon.slice(1)}`
+        const alias_parts = [type, `Fa${style[0]}`, `${icon[0].toUpperCase()}${icon.slice(1)}`]
+        if (style == 'kit') {
+          alias_parts.splice(1, 0)
+        }
+        const alias = alias_parts.join('')
         iconsToAdd.push(alias)
         return `${icon} as ${alias}`
       })
-      imports.push(`import {\n  ${[...new Set(styleIcons)].join(',\n  ')}\n} from '@fortawesome/${pkgName}'`)
+      imports.push(`import {\n  ${[...new Set(styleIcons)].join(',\n  ')}\n} from '${pkgName}'`)
     }
   }
 
