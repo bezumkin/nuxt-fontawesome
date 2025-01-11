@@ -88,8 +88,8 @@ function addIcons(iconStyles: {[key in IconStyleWithKit]?: string[] | boolean}, 
     let pkgName = `@fortawesome/${type}-${style}-svg-icons`
     const icons: string[] = iconStyles[style as IconStyleWithKit]
 
-    if (style == 'kit') {
-      if (typeof(kitIdentifier) !== 'string' || !kitIdentifier.match(/^[a-z\d]{10}$/)) {
+    if (style === 'kit') {
+      if (typeof kitIdentifier !== 'string' || !kitIdentifier.match(/^[a-z\d]{10}$/)) {
         throw new Error('Please check your FontAwesome kit ID')
       }
       pkgName = `@awesome.me/kit-${kitIdentifier}/icons/kit/custom`
@@ -102,11 +102,11 @@ function addIcons(iconStyles: {[key in IconStyleWithKit]?: string[] | boolean}, 
         }
         icon = camelize(icon)
 
-        const alias_parts = [type, `Fa${style[0]}`, `${icon[0].toUpperCase()}${icon.slice(1)}`]
-        if (style == 'kit') {
-          alias_parts.splice(1, 0)
+        const aliasParts = [type, `Fa${style[0]}`, `${icon[0].toUpperCase()}${icon.slice(1)}`]
+        if (style === 'kit') {
+          aliasParts.splice(1, 0)
         }
-        const alias = alias_parts.join('')
+        const alias = aliasParts.join('')
         iconsToAdd.push(alias)
         return `${icon} as ${alias}`
       })
