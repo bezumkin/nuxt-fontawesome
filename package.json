@@ -2,7 +2,7 @@
   "license": "MIT",
   "name": "@vesp/nuxt-fontawesome",
   "description": "Module to use Font Awesome 6 icons in your Nuxt 3 project.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "exports": {
     ".": {
@@ -52,8 +52,8 @@
     "eslint-plugin-prettier": "^5.0.0",
     "nuxt": "^3.13.0",
     "typescript": "^5.2.2",
-    "vite": "^5.4.2",
-    "vue": "^3.4.21",
+    "vite": "^5.4.6",
+    "vue": "^3.5.13",
     "vue-eslint-parser": "^9.3.1"
   }
 }
