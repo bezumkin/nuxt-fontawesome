@@ -11,8 +11,10 @@ export interface ModuleOptions {
   addCss?: boolean
   icons?: {[key in IconStyle]?: string[]}
   proIcons?: {[key in IconStyle]?: string[]}
-  kitIdentifier?: string
   sharpIcons?: {[key in IconStyle]?: string[]}
+  duotoneIcons?: {[key in IconStyle]?: string[]}
+  sharpDuotoneIcons?: {[key in IconStyle]?: string[]}
+  kitIdentifier?: string
   useLayers?: boolean
   useLayersText?: boolean
 }
@@ -74,6 +76,12 @@ function getContents(options: ModuleOptions) {
   if (options.sharpIcons) {
     strings.push(...addIcons(options.sharpIcons, 'sharp'))
   }
+  if (options.duotoneIcons) {
+    strings.push(...addIcons(options.duotoneIcons, 'duotone'))
+  }
+  if (options.sharpDuotoneIcons) {
+    strings.push(...addIcons(options.sharpDuotoneIcons, 'sharp-duotone'))
+  }
 
   const icons = [...new Set(iconsToAdd)].map((key) => key)
   strings.push(`export default {${icons.join(', ')}}`)
@@ -102,7 +110,7 @@ function addIcons(iconStyles: {[key in IconStyleWithKit]?: string[] | boolean}, 
         }
         icon = camelize(icon)
 
-        const aliasParts = [type, `Fa${style[0]}`, `${icon[0].toUpperCase()}${icon.slice(1)}`]
+        const aliasParts = [camelize(type), `Fa${style[0]}`, `${icon[0].toUpperCase()}${icon.slice(1)}`]
         if (style === 'kit') {
           aliasParts.splice(1, 0)
         }

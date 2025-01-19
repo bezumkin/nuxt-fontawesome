@@ -15,7 +15,7 @@ import {
   type Transform,
 } from '@fortawesome/fontawesome-svg-core'
 import {computed} from 'vue'
-import type {IconName} from '@fortawesome/fontawesome-common-types'
+import type {IconPrefix} from '@fortawesome/fontawesome-common-types'
 import {transformIsMeaningful} from '../utils'
 
 const props = defineProps({
@@ -222,14 +222,28 @@ const uniqueId = computed(() => {
 function normalizeIconArgs(icon: Record<string, any> | string | string[] | null) {
   if (icon) {
     if (typeof icon === 'string') {
-      const styles: Record<string, string> = {
+      const styles: Record<string, IconPrefix> = {
         solid: 'fas',
+        sharpSolid: 'fass',
         regular: 'far',
+        sharpRegular: 'fasr',
         light: 'fal',
+        sharpLight: 'fasl',
         thin: 'fat',
+        sharpThin: 'fast',
         duotone: 'fad',
+        duotoneRegular: 'fadr',
+        duotoneLight: 'fadl',
+        duotoneThin: 'fadt',
+        sharpDuotoneSolid: 'fasds',
+        sharpDuotoneRegular: 'fasdr',
+        sharpDuotoneLight: 'fasdl',
+        sharpDuotoneThin: 'fasdt',
         brands: 'fab',
+        kit: 'fak',
+        kitDuotone: 'fakd',
       }
+
       let prefix = styles[faConfig.styleDefault] || 'fas'
       let iconName = icon.replace(/\bfa-/g, '')
       if (iconName.includes(' ')) {
