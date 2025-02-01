@@ -291,7 +291,7 @@ function nextUniqueId() {
 
 function getSVG() {
   const fill = parsedMask.value ? 'black' : 'currentColor'
-  const svg = []
+  const svg: string[] = []
 
   let path = parsedIcon.value.icon[4]
   if (!Array.isArray(path)) {
