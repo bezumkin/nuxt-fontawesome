@@ -29,7 +29,7 @@ const props = defineProps({
 
 const {familyPrefix} = config
 const classes = computed(() => {
-  const tmp = []
+  const tmp: string[] = []
   if (props.counter) {
     tmp.push(`${familyPrefix}-layers-counter`)
   } else {
