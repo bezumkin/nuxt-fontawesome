@@ -1,7 +1,6 @@
 import {defineNuxtConfig} from 'nuxt/config'
 
 export default defineNuxtConfig({
-  telemetry: false,
   devtools: {enabled: false},
   ssr: true,
   app: {

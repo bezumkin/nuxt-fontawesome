@@ -2,17 +2,22 @@
   "license": "MIT",
   "name": "@vesp/nuxt-fontawesome",
   "description": "Module to use Font Awesome 6 icons in your Nuxt 3 project.",
-  "version": "1.2.1",
+  "version": "2.0.0-rc.2",
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
     }
   },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -36,24 +41,27 @@
     "release": "npm run typecheck && npm run lint && npm run prepack && npm publish --access public"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@nuxt/kit": "^3.13.0"
+    "@fortawesome/fontawesome-svg-core": "^7.0.0"
   },
   "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-regular-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@nuxt/module-builder": "^0.8.3",
-    "@nuxt/schema": "^3.9.1",
+    "@fortawesome/free-brands-svg-icons": "^7.0.0",
+    "@fortawesome/free-regular-svg-icons": "^7.0.0",
+    "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "@nuxt/kit": "^3.17.7",
+    "@nuxt/module-builder": "^1.0.1",
+    "@nuxt/schema": "^3.17.7",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/fontawesome": "^1.1.2",
     "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.49.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "nuxt": "^3.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "nuxt": "^3.17.7",
+    "prettier": "^3.6.2",
     "typescript": "^5.2.2",
-    "vite": "^5.4.6",
-    "vue": "^3.5.13",
-    "vue-eslint-parser": "^9.3.1"
+    "vite": "^7.0.6",
+    "vue": "^3.5.18",
+    "vue-eslint-parser": "^9.3.1",
+    "vue-tsc": "^2.2.12"
   }
 }
