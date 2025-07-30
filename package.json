@@ -2,7 +2,7 @@
   "license": "MIT",
   "name": "@vesp/nuxt-fontawesome",
   "description": "Module to use Font Awesome 6 icons in your Nuxt 3 project.",
-  "version": "2.0.0-rc.2",
+  "version": "2.0.0",
   "type": "module",
   "exports": {
     ".": {
